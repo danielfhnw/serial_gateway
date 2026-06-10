@@ -1,0 +1,1 @@
+# Code zum Raspi 4 der die Waage über RS232 d ausliest
