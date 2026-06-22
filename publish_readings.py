@@ -52,7 +52,8 @@ while True:
         "status": fields[1],
         "weight": float(fields[2]),
         "tare_weight": float(fields[3]),
-        "unit": fields[5]
+        "unit": fields[5],
+        "timestamp": datetime.utcnow().isoformat() + "Z"
     }
 
     topic = MQTT_TOPIC
