@@ -1,3 +1,5 @@
+from dataclasses import fields
+
 import serial
 import re
 import json
@@ -41,15 +43,16 @@ while True:
     if not line:
         continue
 
-    value = extract_value(line)
+    fields = [f.strip() for f in line.split(",")]
 
-    if value is None:
+    if fields is None or len(fields) < 6:
         continue
 
     payload = {
-        "value": value,
-        "unit": "g",
-        "timestamp": datetime.utcnow().isoformat() + "Z"
+        "status": fields[1],
+        "weight": float(fields[2]),
+        "tare_weight": float(fields[3]),
+        "unit": fields[5]
     }
 
     topic = MQTT_TOPIC
