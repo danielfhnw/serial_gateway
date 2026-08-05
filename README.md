@@ -26,7 +26,7 @@ User=admin
 WorkingDirectory=/home/admin/serial_gateway
 ExecStartPre=/bin/bash -c 'until [ -e /dev/ttyUSB0 ]; do sleep 1; done'
 ExecStartPre=/bin/bash -c 'until nc -z your.mqtt.server.com 1883; do sleep 2; done'
-ExecStart=/home/admin/vigor_handbox/.venv/bin/python /home/admin/serial_gateway>
+ExecStart=/home/admin/vigor_handbox/.venv/bin/python /home/admin/serial_gateway/publish_readings.py
 Restart=on-failure
 RestartSec=5
 
